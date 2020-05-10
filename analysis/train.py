@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 from xgboost import XGBClassifier
 
 #Data Preparation
-Churn_Modelling = pd.read_csv('..\data\Churn_Modelling.csv')
+Churn_Modelling = pd.read_csv('../data/Churn_Modelling.csv')
 Churn_Modelling[["Geography","Gender"]] = Churn_Modelling[["Geography","Gender"]].astype('category')
 Churn_Modelling["Geography_cat"] = Churn_Modelling["Geography"].cat.codes
 Churn_Modelling["Gender_cat"] = Churn_Modelling["Gender"].cat.codes
@@ -23,7 +23,5 @@ xgb_train_model = xgb_model.fit(trainX, trainY)
 # Pickling
 with open('../models/model_xgb.pk', 'wb') as file:
     pickle.dump(xgb_train_model, file)
-with open('../models/category.pk', 'wb') as file:
-    pickle.dump(category, file)  
 with open('../models/column.pk', 'wb') as file:
     pickle.dump(dataset.columns.to_list(), file)
