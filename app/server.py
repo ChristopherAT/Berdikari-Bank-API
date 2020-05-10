@@ -47,6 +47,7 @@ def apicall():
     try:
         json_ = request.json
         test = json2df(json_)
+        test = test[columns]
     except Exception as e:
         raise e
     if test.empty:
@@ -62,4 +63,4 @@ if __name__ == "__main__":
     print("   Loading model....")
     (model,category,columns) = load_pk()
     print("   Running flask....")
-    app.run(host='0,0,0,0', port=5000)
+    app.run(host="0.0.0.0", port=5000)
