@@ -3,6 +3,7 @@ import pandas as pd
 import dill as pickle
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
+from xgboost import XGBClassifier
 
 #Data Preparation
 Churn_Modelling = pd.read_csv('..\data\Churn_Modelling.csv')
@@ -12,15 +13,17 @@ Churn_Modelling["Gender_cat"] = Churn_Modelling["Gender"].cat.codes
 
 # Split
 target = Churn_Modelling["Exited"]
-dataset = Churn_Modelling.iloc[:,[14,15,6,7,8,9,10,11,12]]
+dataset = Churn_Modelling.iloc[:,[3,14,15,6,7,8,9,10,11,12]]
 (trainX, testX, trainY, testY) = train_test_split(dataset, target, shuffle=False)
 
 # Training model
-model = RandomForestClassifier(n_estimators=100)
-model.fit(trainX, trainY)
-predictions = model.predict(testX)
+xgb_model = XGBClassifier()
+xgb_train_model = xgb_model.fit(trainX, trainY)
 
 # Pickling
-filename = 'model_rf.pk'
-with open('../models/'+filename, 'wb') as file:
-    pickle.dump(model, file)
+with open('../models/model_xgb.pk', 'wb') as file:
+    pickle.dump(xgb_train_model, file)
+with open('../models/category.pk', 'wb') as file:
+    pickle.dump(category, file)  
+with open('../models/column.pk', 'wb') as file:
+    pickle.dump(dataset.columns.to_list(), file)

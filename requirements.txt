@@ -8,13 +8,7 @@ jsonschema
 matplotlib
 numpy
 pandas
-pandocfilters
-pickleshare
-python-dateutil
 requests
 scikit-learn
-scipy
-seaborn
-selenium
-tornado
 urllib3
+xgboost-py

@@ -14,11 +14,13 @@ import dill as pickle
 app = Flask(__name__)
 
 def load_pk():
-    with open('../models/model_rf.pk', 'rb') as file:
+    with open('../models/model_xgb.pk', 'rb') as file:
         model = pickle.load(file)
     with open('../models/category.pk', 'rb') as file:
         category = pickle.load(file)
-    return (model,category)
+    with open('../models/column.pk', 'rb') as file:
+        columns = pickle.load(file)
+    return (model,category,columns)
 
 def json2df(json_data):
     print("   Converting JSON to DataFrame....")
@@ -52,14 +54,12 @@ def apicall():
     else:
         print("   Predicting....")
         predictions = model.predict(test)
-        # predictions = pd.DataFrame(predictions, columns=["Prediction"])
-        # responses = jsonify(predictions.to_json(orient='records'))
         responses = jsonify({"prediction": str(predictions.tolist())})
         responses.status_code = 200
         return responses
 		
 if __name__ == "__main__":
     print("   Loading model....")
-    (model,category) = load_pk()
+    (model,category,columns) = load_pk()
     print("   Running flask....")
-    app.run()
+    app.run(host='0,0,0,0', port=5000)
