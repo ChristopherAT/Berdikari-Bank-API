@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <div class="container" id="body-home">
+    <div class="row center">
+      <div class="col s12 m12">
+
+        <div class="card-panel teal lighten-2">
+          <h3>
+            BANK CUSTOMER CHURNING PREDICTION
+          </h3>
+        </div>
+
+        <div class="card-panel deep-orange lighten-4 col s12 m10 offset-m1">
+		Please fill this form:
+          <form class="col s12 m12">
+            <div class="input-field col s12 m6">
+              <i class="material-icons prefix">language</i>
+              <input id="Pengirim" type="text">
+              <label for="Pengirim">Country</label>
+            </div>
+
+            <div class="input-field col s12 m6">
+              <i class="material-icons prefix">wc</i>
+              <input id="Pengirim" type="text">
+              <label for="Pengirim">Gender</label>
+            </div>
+
+            <div class="input-field col s12 m6">
+              <i class="material-icons prefix">person</i>
+              <input id="Pengirim" type="text">
+              <label for="Pengirim">Age</label>
+            </div>
+
+            <div class="input-field col s12 m6">
+              <i class="material-icons prefix">person</i>
+              <input id="Pengirim" type="text">
+              <label for="Pengirim">Tenure</label>
+            </div>
+            
+            <div class="input-field col s12 m6">
+              <i class="material-icons prefix">person</i>
+              <input id="Pengirim" type="text">
+              <label for="Pengirim">NumOfProducts</label>
+            </div>
+
+            <div class="input-field col s12 m6">
+              <i class="material-icons prefix">person</i>
+              <input id="Pengirim" type="text">
+              <label for="Pengirim">HasCrCard</label>
+            </div>
+
+            <div class="input-field col s12 m6">
+              <i class="material-icons prefix">person</i>
+              <input id="Pengirim" type="text">
+              <label for="Pengirim">IsActiveMember</label>
+            </div>
+
+            <div class="input-field col s12 m6">
+              <i class="material-icons prefix">person</i>
+              <input id="Pengirim" type="text">
+              <label for="Pengirim">IsActiveMember</label>
+            </div>
+
+            <div class="input-field col s12 m6">
+              <i class="material-icons prefix">person</i>
+              <input id="Pengirim" type="text">
+              <label for="Pengirim">Balance</label>
+            </div>
+			
+			<button class="btn waves-effect waves-light" type="submit" name="action" onclick="kirimWA();">
+            PREDICT
+            <i class="material-icons right">autorenew</i>
+            <br>
+          </button>
+
+          </form>
+
+          
+        </div>
+
+        <div class="card-panel deep-orange lighten-4 col s12 m10 offset-m1">
+          Prediksi: 
+        </div>
+
+  <form action="{{ url_for('handle_data') }}" method="post">
+    <input type="text" name="projectFilepath">
+    <input type="submit">
+</form>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!--JavaScript at end of body for optimized loading-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
